@@ -96,6 +96,19 @@ class SwitchConnection(object):
         else:
             self.client_stub.Write(request)
 
+    ##### CUSTOM CODE
+    def ModifyTableEntry(self, table_entry, dry_run=False):
+        request = p4runtime_pb2.WriteRequest()
+        request.device_id = self.device_id
+        request.election_id.low = 1
+        update = request.updates.add()
+        update.type = p4runtime_pb2.Update.MODIFY
+        update.entity.table_entry.CopyFrom(table_entry)
+        if dry_run:
+            print "P4Runtime Write:", request
+        else:
+            self.client_stub.Write(request)
+
     def ReadTableEntries(self, table_id=None, dry_run=False):
         request = p4runtime_pb2.ReadRequest()
         request.device_id = self.device_id
