@@ -1,9 +1,33 @@
 # P4 Tutorial
 
-## Introduction
+## Obtaining required software
+
+To complete the exercises or run the sample code, you will need to either build a
+virtual machine or install several dependencies.
+
+To build the virtual machine:
+- Install [Vagrant](https://vagrantup.com) and [VirtualBox](https://virtualbox.org)
+- Clone the repository
+- `cd vm`
+- `vagrant up`
+- Log in with username `p4` and password `p4` and issue the command `sudo shutdown -r now`
+- When the machine reboots, you should have a graphical desktop machine with the required
+software pre-installed.
+
+*Note: Before running the `vagrant up` command, make sure you have enabled virtualization in your environment; otherwise you may get a "VT-x is disabled in the BIOS for both all CPU modes" error. Check [this](https://stackoverflow.com/questions/33304393/vt-x-is-disabled-in-the-bios-for-both-all-cpu-modes-verr-vmx-msr-all-vmx-disabl) for enabling it in virtualbox and/or BIOS for different system configurations.
+
+You will need the script to execute to completion before you can see the `p4` login on your virtual machine's GUI. In some cases, the `vagrant up` command brings up only the default `vagrant` login with the password `vagrant`. Dependencies may or may not have been installed for you to proceed with running P4 programs. Please refer the existing issues to help fix your problem or create a new one if your specific problem isn't addressed there.*
+
+To install dependencies by hand, please reference the [vm](../vm) installation scripts.
+They contain the dependencies, versions, and installation procedure.
+You should be able to run them directly on an Ubuntu 16.04 machine, although note that the scripts currently assume the existence of a directory `/home/vagrant`:
+- `sudo ./root-bootstrap.sh`
+- `sudo ./user-bootstrap.sh`
+
+## Exercises and Sample Code
 
 Welcome to the P4 Tutorial! We've prepared a set of exercises to help
-you get started with P4 programming, organized into several modules:
+you get started with P4 programming, organized into several modules. If you are a student from INF UFRGS you might also want to take a look at [the sample code](./samples/infufrgs-2019-01) discussed in class.
 
 1. Introduction and Language Basics
 * [Basic Forwarding](./exercises/basic)
@@ -28,31 +52,3 @@ in the P4_tutorial.pdf in the tutorial directory.
 
 A P4 Cheat Sheet is also available [online](https://drive.google.com/file/d/1Z8woKyElFAOP6bMd8tRa_Q4SA1cd_Uva/view?usp=sharing)
 which contains various examples that you can refer to.
-        
-## Obtaining required software
-
-If you are starting this tutorial at the Spring 2018 P4 Developer Day,
-then we've already provided you with a virtual machine that has all of
-the required software installed.
-
-Otherwise, to complete the exercises, you will need to either build a
-virtual machine or install several dependencies.
-
-To build the virtual machine:
-- Install [Vagrant](https://vagrantup.com) and [VirtualBox](https://virtualbox.org)
-- Clone the repository
-- `cd vm`
-- `vagrant up`
-- Log in with username `p4` and password `p4` and issue the command `sudo shutdown -r now`
-- When the machine reboots, you should have a graphical desktop machine with the required
-software pre-installed.
-
-*Note: Before running the `vagrant up` command, make sure you have enabled virtualization in your environment; otherwise you may get a "VT-x is disabled in the BIOS for both all CPU modes" error. Check [this](https://stackoverflow.com/questions/33304393/vt-x-is-disabled-in-the-bios-for-both-all-cpu-modes-verr-vmx-msr-all-vmx-disabl) for enabling it in virtualbox and/or BIOS for different system configurations.
-
-You will need the script to execute to completion before you can see the `p4` login on your virtual machine's GUI. In some cases, the `vagrant up` command brings up only the default `vagrant` login with the password `vagrant`. Dependencies may or may not have been installed for you to proceed with running P4 programs. Please refer the existing issues to help fix your problem or create a new one if your specific problem isn't addressed there.*
-
-To install dependencies by hand, please reference the [vm](../vm) installation scripts.
-They contain the dependencies, versions, and installation procedure.
-You should be able to run them directly on an Ubuntu 16.04 machine, although note that the scripts currently assume the existence of a directory `/home/vagrant`:
-- `sudo ./root-bootstrap.sh`
-- `sudo ./user-bootstrap.sh`
